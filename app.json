@@ -8,7 +8,19 @@
     "scheme": "safetyapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.amy.macd.safetyapp",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
+      }
+    },
+    "infoPlist": {
+      "NSCalendarsUsageDescription": "TWB Safety App needs calendar access to load your scheduled inspections from Inspection Express.",
+      "NSAppTransportSecurity": {
+        "NSAllowsArbitraryLoads": true
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -25,14 +37,14 @@
     },
     "plugins": [
       "expo-router",
+      "expo-secure-store",
       [
-        "expo-splash-screen",
+        "expo-calendar",
         {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "calendarPermission": "Allow TWB Safety App to access your calendar to load scheduled inspections."
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true,
